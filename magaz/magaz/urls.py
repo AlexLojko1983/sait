@@ -24,5 +24,6 @@ urlpatterns = [
     re_path(r'^news/', views.news),
     re_path(r'^category/news/', views.news),
     re_path(r'^contacts', views.contact),
+    re_path(r'^user', views.user),
 
 ]
