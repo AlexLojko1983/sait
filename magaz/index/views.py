@@ -3,8 +3,8 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, "index.html")
-def about(request):
-    return HttpResponse(" О сайте")
+def news(request):
+    return render(request, "news.html")
 def contact(request):
-    return HttpResponse("Контакты")
+    return render(request, "contacts.html")
 # Create your views here.
