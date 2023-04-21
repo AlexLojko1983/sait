@@ -11,22 +11,20 @@ def news(request):
     return render(request, "news.html")
 def contact(request):
     return render(request, "contacts.html")
+# def user(request):
+#     users = Person.objects.order_by('-date')
+#     return render(request, 'user.html', {'form': users})
 def user(request):
-    if request.method == "POST":
-        userform = UserForm(request.POST)
-        if userform.is_valid():
-            name = userform.cleaned_data["name"]
-            age = userform.cleaned_data["age"]
-            email = userform.cleaned_data["email"]
-            # gender = userform.cleaned_data["gender"]
-            password = userform.cleaned_data["password"]
-            # userform.save()
-            return HttpResponse(f"<h2>Привет, {name}, твой возраст: {age}, твоя почта: {email}</h2>, <h1>Pas: {password}</h1>")
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request,"index.html")
         else:
-            return HttpResponse("Invalid data")
-    else:
-        userform = UserForm()
-        return render(request, "user.html", {"form": userform})
+            HttpResponse('INVALID DATA')
+    userform = UserForm()
+
+    return render(request, 'user.html', {'form': userform})
 
 
 # Create your views here.

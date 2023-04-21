@@ -20,6 +20,7 @@ from index import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('auth/', auth.site.urls),
     path('', views.index),
     re_path(r'^news/', views.news),
     re_path(r'^category/news/', views.news),
