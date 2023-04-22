@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from index import views
+from users import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,4 @@ urlpatterns = [
     re_path(r'^contacts', views.contact),
     re_path(r'^user', views.user),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма регистрации</title>
+
+</head>
+<body>
+body{
+    background: #2c2c2c;
+}
+    <h1>Форма регистрации</h1>
+    <form method="POST" >
+        {% csrf_token %}
+
+        {{ form.name }}<br><br>
+        {{ form.email }}<br><br>
+        {{ form.age }}<br><br>
+        {{ form.password }}<br><br>
+        <h4>Пол{{ form.gender }}</h4><br>
+
+    <button class="btn btn-success" type="submit" >Save</button>
+    </form>
+</body>
+</html>
