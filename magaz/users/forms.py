@@ -1,12 +1,20 @@
 from django import forms
-from django.forms import ModelForm, TextInput, EmailField, PasswordInput
 from .models import Person
+from django.contrib.auth.models import User
 
 
-class UserForm(ModelForm):
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите пароль'
+            }))
+    pasrepeat = forms.CharField(widget=forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Повторите пароль'
+            }))
     class Meta:
         model = Person
-        fields = ['name', 'email', 'age', 'password','gender']
+        fields = ['name', 'email', 'age', 'gender']
 
         widgets = {
             "name": forms.TextInput(attrs={
@@ -21,17 +29,14 @@ class UserForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Возраст'
             }),
-            # "gender": forms.CheckboxInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Пол'
-            # }),
-            "password": PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите пароль'
-            }),
+
         }
-        # name = forms.CharField(help_text="Введите свое имя")
-        # email = forms.EmailField()
-        # age = forms.IntegerField(initial=20, required=False)
-        # gender = forms.ChoiceField(choices=[("Woman", "W"), ("Man", "M")], initial="Man")
-        # password = forms.CharField(widget=forms.PasswordInput())
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Passwords don\'t match.')
+        return cd['password2']
+class LoginForm(forms.Form):
+    name = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

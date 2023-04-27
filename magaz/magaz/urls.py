@@ -20,6 +20,7 @@ from users import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('auth/', auth.site.urls),
@@ -28,5 +29,6 @@ urlpatterns = [
     re_path(r'^category/news/', views.news),
     re_path(r'^contacts', views.contact),
     re_path(r'^user', views.user),
+    re_path(r'^login', views.user_login),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

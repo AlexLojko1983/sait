@@ -6,9 +6,7 @@
 
 </head>
 <body>
-body{
-    background: #2c2c2c;
-}
+
     <h1>Форма регистрации</h1>
     <form method="POST" >
         {% csrf_token %}
@@ -17,7 +15,9 @@ body{
         {{ form.email }}<br><br>
         {{ form.age }}<br><br>
         {{ form.password }}<br><br>
+        {{ form.pasrepeat }}<br><br>
         <h4>Пол{{ form.gender }}</h4><br>
+
 
     <button class="btn btn-success" type="submit" >Save</button>
     </form>
