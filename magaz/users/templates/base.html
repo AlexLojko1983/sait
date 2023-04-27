@@ -3,11 +3,12 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static  'users/css/main.css' %}" rel="stylesheet">
 </head>
 <body>
+    <img src="{%static 'users/img/logo-2.png' %}" alt="MDN logo">
 <div id="header">
-    <span class="logo">Bookmarks</span>
+    <span class="logo"></span>
 </div>
 <div id="content">
     {% block content %}

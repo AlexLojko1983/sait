@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Форма регистрации</title>
-
-</head>
-<body>
-
+{% extends "base.html" %}
+{% block title %}Форма регистрации{% endblock %}
+{% block content %}
     <h1>Форма регистрации</h1>
-    <form method="POST" >
+    <p>Пожалуйста заполните форму:</p>
+    <form method="POST">
         {% csrf_token %}
 
         {{ form.name }}<br><br>
@@ -17,9 +12,6 @@
         {{ form.password }}<br><br>
         {{ form.pasrepeat }}<br><br>
         <h4>Пол{{ form.gender }}</h4><br>
-
-
-    <button class="btn btn-success" type="submit" >Save</button>
+        <button class="btn btn-success" type="submit" >Save</button>
     </form>
-</body>
-</html>
+{% endblock %}

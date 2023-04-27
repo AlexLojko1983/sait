@@ -8,25 +8,25 @@ from django.contrib.auth import authenticate, login
 
 def user_login(request):
     if request.method == 'POST':
-        Lform = LoginForm(request.POST)
-        if Lform.is_valid():
-            cd = Lform.cleaned_data
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
             user = authenticate(username=cd['name'], password=cd['password'])
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse('Vse Good')
+                    return render(request, "users/index.html")
                 else:
                     return HttpResponse('No active!!')
             else:
                 return HttpResponse('Invalid login')
     else:
-        Lform = LoginForm()
-    return render(request, 'users/login.html', {'form': Lform})
+        form = LoginForm()
+    return render(request, 'users/login.html', {'form': form})
 
 
 def index(request):
-    return render(request, "layout.html")
+    return render(request, "base.html")
 
 
 def news(request):

@@ -5,13 +5,14 @@ from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите пароль'
-            }))
+        'class': 'form-control',
+        'placeholder': 'Введите пароль'
+    }))
     pasrepeat = forms.CharField(widget=forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Повторите пароль'
-            }))
+        'class': 'form-control',
+        'placeholder': 'Повторите пароль'
+    }))
+
     class Meta:
         model = Person
         fields = ['name', 'email', 'age', 'gender']
@@ -37,6 +38,14 @@ class UserForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
+
+
 class LoginForm(forms.Form):
-    name = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    name = forms.CharField(label="Имя", widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Имя'
+    }))
+    password = forms.CharField(label="Пароль", widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Введите пароль'
+    }))
