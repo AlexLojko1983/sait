@@ -1,6 +1,35 @@
 from django import forms
 from .models import Person
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+
+class UserRegisterForm(UserCreationForm):
+    # email = forms.EmailField(widget=forms.TextInput(attrs={
+    #             'class': 'form-control',
+    #             'placeholder': 'Почта'
+    # }))
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password', 'password2']
+        widgets = {
+            "username": forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Имя'
+            }),
+            "email": forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Почта'
+            }),
+            "password": forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите пароль'
+            }),
+            "password2": forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Повторите пароль'
+            }),
+        }
 
 
 class UserForm(forms.ModelForm):

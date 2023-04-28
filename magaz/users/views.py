@@ -1,9 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import UserForm, LoginForm
+from .forms import UserForm, LoginForm, UserRegisterForm
+from django.contrib import messages
 from .models import Person
 import asyncio
 from django.contrib.auth import authenticate, login
+
+
+def register(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Hi {username} !!!')
+            return redirect('blog-home')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
 
 
 def user_login(request):
@@ -37,23 +51,15 @@ def contact(request):
     return render(request, "contacts.html")
 
 
-# def user(request):
-#     users = Person.objects.order_by('-date')
-#     return render(request, 'createuser.html', {'form': users})
 def user(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            # new_user = form.save(commit=False)
-            # new_user.set_password(form.cleaned_data['password'])
-            # new_user.save()
             form.save()
-
             return render(request, "users/index.html")
         else:
             HttpResponse('INVALID DATA')
-    userform = UserForm()
-
-    return render(request, 'create/createuser.html', {'form': userform})
+    form = UserForm()
+    return render(request, 'create/createuser.html', {'form': form})
 
 # Create your views here.
