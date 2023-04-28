@@ -11,24 +11,15 @@ class UserRegisterForm(UserCreationForm):
     # }))
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
         widgets = {
             "username": forms.TextInput(attrs={
-                'class': 'form-control',
                 'placeholder': 'Имя'
             }),
             "email": forms.TextInput(attrs={
-                'class': 'form-control',
                 'placeholder': 'Почта'
             }),
-            "password": forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите пароль'
-            }),
-            "password2": forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Повторите пароль'
-            }),
+
         }
 
 
