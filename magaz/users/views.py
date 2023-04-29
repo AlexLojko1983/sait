@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserForm, LoginForm, UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth.models import User, AnonymousUser
 from .models import Person
 import asyncio
 from django.contrib.auth import authenticate, login
@@ -14,10 +15,16 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Hi {username} !!!')
-            return render(request, 'users/login.html', {'form': LoginForm(request.POST)})
+
+            return redirect('/')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+# def userprint(request):
+#     get_name = Person.objects.all()
+#     return render(request, '/', {'get_name': get_name})
 
 
 def user_login(request):
@@ -29,7 +36,8 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, "users/index.html")
+                    messages.success(request, f'Hi {user} !!!')
+                    return redirect('/')
                 else:
                     return HttpResponse('No active!!')
             else:
@@ -40,7 +48,8 @@ def user_login(request):
 
 
 def index(request):
-    return render(request, "base.html")
+    get_name = User.objects.all()
+    return render(request, "base.html", {'get_name': get_name})
 
 
 def news(request):

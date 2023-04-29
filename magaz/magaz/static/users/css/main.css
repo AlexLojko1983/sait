@@ -9,3 +9,11 @@ aside{
     padding: 2.5%;
     height: 100vh;
 }
+
+alert{
+    float:right;
+    clear: both;
+    width: 100px;
+    margin: 20px 34%;
+    text-align: right;
+}

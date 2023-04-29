@@ -4,8 +4,9 @@ body {
 
 aside{
     float: left;
-    background: #181818;
+    background: navy;
     width: 20%;
     padding: 2.5%;
-    height: 100vh;
+    height: 70vh;
+    color: #fff
 }
