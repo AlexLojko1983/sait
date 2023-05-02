@@ -10,3 +10,10 @@ aside{
     height: 70vh;
     color: #fff
 }
+alert{
+    float: right;
+    width: 5%;
+    padding: 2,5%;
+    height: 10vh;
+
+}

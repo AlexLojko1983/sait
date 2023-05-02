@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'magaz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'magaz/users/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'magaz/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

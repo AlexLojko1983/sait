@@ -14,17 +14,15 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
             messages.success(request, f'Hi {username} !!!')
 
             return redirect('/')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
-
-
-# def userprint(request):
-#     get_name = Person.objects.all()
-#     return render(request, '/', {'get_name': get_name})
 
 
 def user_login(request):
