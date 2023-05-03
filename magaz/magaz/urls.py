@@ -17,18 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from users import views
+from products import views as product_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', product_views.index),
     re_path(r'^news/', views.news),
     re_path(r'^category/news/', views.news),
     re_path(r'^contacts', views.contact),
     re_path(r'^user', views.user),
     re_path(r'^login', views.user_login),
     re_path(r'^register', views.register, name='register'),
+    re_path(r'^addproduct', product_views.addProduct),
+
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

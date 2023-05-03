@@ -39,6 +39,16 @@
 </div>
 <div id="content">
     {% block content %}
+    <div class="features">
+        <h1>Товары</h1>
+    {% for el in product %}
+        <div class="alert">
+            <h3>{{el.name}}</h3>
+            <p>{{ el.prise }}</p>
+            <p>{{ el.unit }}</p>
+        </div>
+        {% endfor %}
+    </div>
     {% endblock %}
 </div>
 </body>

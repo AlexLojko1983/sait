@@ -45,11 +45,6 @@ def user_login(request):
     return render(request, 'users/login.html', {'form': form})
 
 
-def index(request):
-    get_name = User.objects.all()
-    return render(request, "base.html", {'get_name': get_name})
-
-
 def news(request):
     return render(request, "news.html")
 
