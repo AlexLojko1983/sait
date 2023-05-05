@@ -42,10 +42,10 @@
     <div class="features">
         <h1>Товары</h1>
     {% for el in product %}
-        <div class="alert">
+        <div class="alert alert-product">
             <h3>{{el.name}}</h3>
-            <p>{{ el.prise }}</p>
-            <p>{{ el.unit }}</p>
+            <p>{{ el.prise }} p</p>
+            <p>1 {{ el.unit }}</p>
         </div>
         {% endfor %}
     </div>

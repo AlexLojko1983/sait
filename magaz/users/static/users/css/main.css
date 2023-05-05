@@ -15,5 +15,10 @@ alert{
     width: 5%;
     padding: 2,5%;
     height: 10vh;
-
+}
+.alert-product{
+    float: left;
+    width: 15%;
+    padding-left: 30,5%;
+    height: 10vh;
 }
