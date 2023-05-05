@@ -1,5 +1,6 @@
 body {
-    background: yellow;
+
+    background-image: url("Female.jpg");
 }
 
 aside{
@@ -11,6 +12,7 @@ aside{
     color: #fff
 }
 alert{
+    color: #fff;
     float: right;
     width: 5%;
     padding: 2,5%;
