@@ -17,8 +17,10 @@ alert{
     height: 10vh;
 }
 .alert-product{
+    background: #fff;
+
     float: left;
     width: 15%;
-    padding-left: 30,5%;
-    height: 10vh;
+    padding-left: 300,5%;
+    height: 20vh;
 }
