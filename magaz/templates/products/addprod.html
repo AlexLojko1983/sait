@@ -5,8 +5,8 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Добро пожаловать </legend>
-                {{ form|crispy }}
+                <legend class="border-bottom mb-4"><font size="6" color="#fff" face="serif">Добавление товаров: </font> </legend>
+                <font size="4" color="#fff" face="serif">{{ form|crispy }}</font>
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Добавить</button>

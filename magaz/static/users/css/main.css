@@ -9,7 +9,12 @@ aside{
     width: 20%;
     padding: 2.5%;
     height: 70vh;
-    color: #fff
+    color: #fff;
+}
+div {
+    color: #fff;
+}
+
 }
 alert{
     color: #fff;
@@ -17,6 +22,7 @@ alert{
     width: 5%;
     padding: 2,5%;
     height: 10vh;
+
 }
 .alert-product{
     background: #fff;
@@ -25,4 +31,5 @@ alert{
     width: 15%;
     padding-left: 300,5%;
     height: 20vh;
+
 }
